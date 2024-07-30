@@ -4,6 +4,7 @@ export class FaceSnap {
 
 location? : string;
 id : string;
+createdDate: string | number | Date | undefined;
 
     constructor(public title: string,
                 public description: string,
