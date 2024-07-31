@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { FaceSnap } from '../models/face-snap';
 import { SnapType } from '../models/snap-type.type';
+import { FaceSnap } from '../models/face-snap';
 
 @Injectable({
   providedIn: 'root'
@@ -49,4 +49,30 @@ export class FaceSnapsService {
     const faceSnap = this.getFaceSnapById(faceSnapId);
     faceSnap.snap(snapType);
   }
+
+  addFaceSnap(formValue: { title: string, description: string, imageUrl: string, location?: string }): void{
+    const faceSnap: FaceSnap ={
+      ...formValue,
+      createdAt: new Date(),
+      snaps: 0,
+      id: this.faceSnaps[this.faceSnaps.length - 1].id + 1,
+      createdDate: undefined,
+      addSnap: function (): void {
+        throw new Error('Function not implemented.');
+      },
+      removeSnap: function (): void {
+        throw new Error('Function not implemented.');
+      },
+      snap: function (snapType: SnapType): void {
+        throw new Error('Function not implemented.');
+      },
+      setLocation: function (location: string): void {
+        throw new Error('Function not implemented.');
+      },
+      withLocation: function (location: string): FaceSnap {
+        throw new Error('Function not implemented.');
+      }
+    };
+    this.faceSnaps.push(faceSnap);
+}
 }
